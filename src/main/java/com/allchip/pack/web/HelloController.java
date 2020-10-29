@@ -10,7 +10,7 @@ import java.util.Date;
 @Controller
 public class HelloController {
 
-    @RequestMapping("/hello")
+    @RequestMapping({"/hello" , "/"})
     public String hello(Model m) {
         m.addAttribute("now", DateFormat.getDateTimeInstance().format(new Date()));
         return "hello";
