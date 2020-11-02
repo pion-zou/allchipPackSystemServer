@@ -23,7 +23,7 @@ public interface ContractMapper {
     @Select("select * from contract where number= #{number} ")
     public Contract getByNumber(String number);
 
-    @Update("update contract set remark=#{remark} , state=#{state}, publish_time=#{publish_time}  , update_time = now() , editor = #{editor} where id=#{id} ")
+    @Update("<script>update contract set <if test =\'number != null and number != \"\" \'>number  = #{number} , </if> remark=#{remark} , state=#{state}, publish_time=#{publish_time}  , update_time = now() , editor = #{editor} where id=#{id} </script>")
     public int update(Contract category);
 
 

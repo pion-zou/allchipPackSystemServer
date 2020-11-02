@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>首页</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link href="https://cdn.bootcss.com/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="shortcut icon" href="../resources/favicon.ico" th:href="@{/static/favicon.ico}"/>
+
+
+</head>
+
+<body>
+<div class="row" th:insert="~{common :: header}">
+</div>
+
+<ul class="list-group">
+    <li class="list-group-item"><a href="/contractList">查看订单</a></li>
+    <li class="list-group-item"><a href="/addContractPage">录入订单</a></li>
+    <li class="list-group-item"><a href="/listContract">订单搜索</a></li>
+</ul>
+</body>
+
+</html>

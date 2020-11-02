@@ -96,4 +96,20 @@ public class Contract {
     public void setGoodList(List<Good> goodList) {
         this.goodList = goodList;
     }
+
+    @Override
+    public String toString() {
+        return "Contract{" +
+                "id=" + id +
+                ", number='" + number + '\'' +
+                ", creator='" + creator + '\'' +
+                ", remark='" + remark + '\'' +
+                ", state='" + state + '\'' +
+                ", create_time=" + create_time +
+                ", update_time=" + update_time +
+                ", publish_time='" + publish_time + '\'' +
+                ", editor='" + editor + '\'' +
+                ", goodList=" + goodList +
+                '}';
+    }
 }

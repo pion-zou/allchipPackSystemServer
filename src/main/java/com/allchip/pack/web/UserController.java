@@ -20,13 +20,13 @@ public class UserController {
     public String login(@RequestBody User reqUser) throws Exception {
         RequestBean<User> bean = new RequestBean<User>();
         if(reqUser == null){
-            bean.setStatus(RequestBean.STATUS_SUCCESS);
+            bean.setStatus(RequestBean.STATUS_FAILED);
             bean.setMsg("请求信息错误");
             return new Gson().toJson(bean);
         }
         User user = userMapper.getByName(reqUser.getName());
         if(user == null){
-            bean.setStatus(RequestBean.STATUS_SUCCESS);
+            bean.setStatus(RequestBean.STATUS_FAILED);
             bean.setMsg("账号不存在");
 
         }else if(reqUser.getPassword().equals( user.getPassword())){
@@ -37,8 +37,23 @@ public class UserController {
             respUser.setName(user.getName());
             bean.setData(respUser);
         }else{
-            bean.setStatus(RequestBean.STATUS_SUCCESS);
+            bean.setStatus(RequestBean.STATUS_FAILED);
             bean.setMsg("密码错误");
+        }
+        return new Gson().toJson(bean);
+    }
+
+    /**用户名重复性校验*/
+    @RequestMapping("/check")
+    public String checkUserName(String username) throws Exception{
+        RequestBean<User> bean = new RequestBean<User>();
+        User user = userMapper.getByName(username);
+        if(user == null){
+            bean.setStatus(RequestBean.STATUS_SUCCESS);
+            bean.setMsg("用户名可以使用");
+        }else{
+            bean.setStatus(RequestBean.STATUS_SUCCESS);
+            bean.setMsg("用户名已经被使用");
         }
         return new Gson().toJson(bean);
     }

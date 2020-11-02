@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>编辑订单</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link href="https://cdn.bootcss.com/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="shortcut icon" href="../resources/favicon.ico" th:href="@{/static/favicon.ico}"/>
+
+</head>
+
+<body>
+<div class="row" th:insert="~{common :: header}">
+</div>
+<div class="container" style="min-height: 500px">
+    <br>
+    <div class="panel panel-default">
+        <div class="panel-heading">合同号</div>
+        <input type="text" class="form-control panel-body" id="number" >
+    </div>
+    <form id="edit-contract">
+        <div class="form-group">
+            <label for="state">订单状态</label>
+            <input type="text" class="form-control" id="state" >
+        </div>
+        <div class="form-group">
+            <label for="editor">编辑者</label>
+            <input type="text" class="form-control" id="editor" placeholder="游客">
+        </div>
+        <div class="form-group">
+            <label for="publish_time">发货日期</label>
+            <input type="text" class="form-control" id="publish_time">
+        </div>
+        <div class="form-group">
+            <label for="remark">备注</label>
+            <textarea class="form-control" rows="3" id="remark"></textarea>
+        </div>
+        <button type="submit" class="btn btn-default" id="btn-edit">修改</button>
+    </form>
+    <br>
+    <div id="feedback-edit"></div>
+    <hr>
+    <form id="add-good">
+        <div class="form-group">
+            <label for="goods_file">导入商品型号</label>
+            <input type="file" id="goods_file">
+            <p class="help-block">选择的文件需要xlsx格式且小于50MB</p>
+        </div>
+        <button type="submit" class="btn btn-default">添加</button>
+    </form>
+    <br>
+    <div id="feedback"></div>
+</div>
+<input th:value="${param.id}" type="hidden" id="contract_id"/>
+
+<script type="text/javascript"
+        src="/js/jquery-3.4.1.min.js"></script>
+<script type="text/javascript" src="js/editContract.js"></script>
+</body>
+
+</html>
