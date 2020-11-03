@@ -9,6 +9,7 @@ import com.allchip.pack.pojo.User;
 import com.allchip.pack.utils.ExcelUtils;
 import com.allchip.pack.utils.QRCodeUtil;
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Controller;
@@ -47,12 +48,12 @@ public class ContractController {
 //        return "editContract";
 //    }
 
-    @RequestMapping("/editGoodPage")
-    public String editGoodPage(int id , Model m) throws Exception {
-        Good g = goodMapper.getById(id );
-        m.addAttribute("g", g);
-        return "editGood";
-    }
+//    @RequestMapping("/editGoodPage")
+//    public String editGoodPage(int id , Model m) throws Exception {
+//        Good g = goodMapper.getById(id );
+//        m.addAttribute("g", g);
+//        return "editGood";
+//    }
 
 //    @RequestMapping("/contractDetailPage")
 //    public String contractDetailPage(int id , Model m) throws Exception {
@@ -99,13 +100,13 @@ public class ContractController {
 //    }
 
     //编辑货物
-    @RequestMapping("/editGood")
-    public String editGood(Good g) throws Exception {
-        goodMapper.update(g);
-        System.out.println("editGood :" + g.getNumber());
-        Contract contract = contractMapper.getByNumber(g.getNumber());
-        return "redirect:contractDetailPage?id="+contract.getId();
-    }
+//    @RequestMapping("/editGood")
+//    public String editGood(Good g) throws Exception {
+//        goodMapper.update(g);
+//        System.out.println("editGood :" + g.getNumber());
+//        Contract contract = contractMapper.getByNumber(g.getNumber());
+//        return "redirect:contractDetailPage?id="+contract.getId();
+//    }
 
     /**其他*/
     /**打印二维码*/
@@ -171,6 +172,18 @@ public class ContractController {
         bean.setData(contract);
         return new Gson().toJson(bean);
     }
+
+    @RequestMapping("/getGoodDetail")
+    @ResponseBody
+    public String getGoodDetail(@RequestParam int id) throws Exception {
+        RequestBean<Good> bean = new RequestBean<Good>();
+        Good good = goodMapper.getById(id);
+        System.out.print("getGoodDetail:" + good);
+        bean.setStatus(RequestBean.STATUS_SUCCESS);
+        bean.setData(good);
+        return  new GsonBuilder().setDateFormat("yyyy-MM-dd'T'HH:mm:ss").create().toJson(bean);
+    }
+
 
     //更新货物的装包状态
     @RequestMapping("/updatePackageGood")
@@ -252,6 +265,17 @@ public class ContractController {
         bean.setStatus(RequestBean.STATUS_SUCCESS);
         bean.setMsg("删除成功");
         goodMapper.delete(number);
+        return new Gson().toJson(bean);
+    }
+
+    //编辑货物
+    @RequestMapping("/editGood")
+    @ResponseBody
+    public String editGood(@RequestBody Good g) throws Exception {
+        goodMapper.update(g);
+        RequestBean<Contract> bean = new RequestBean<Contract>();
+        bean.setStatus(RequestBean.STATUS_SUCCESS);
+        bean.setMsg("编辑成功");
         return new Gson().toJson(bean);
     }
 }
