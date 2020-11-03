@@ -34,20 +34,12 @@ public class RouterController {
         return page;
     }
 
-    @RequestMapping(path = {"/contractDetailPage/{id}"})
-    public ModelAndView toContractDetailPage(@PathVariable(value = "id") String id){
+    @RequestMapping(path = {"/{page}}/{id}"})
+    public ModelAndView toContractDetailPage(@PathVariable(value = "id") String id , @PathVariable() String page ){
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("contractDetailPage");
+        modelAndView.setViewName(page);
         modelAndView.addObject("id", id);
         return modelAndView;
     }
-    @RequestMapping(path = {"/editContractPage/{id}"})
-    public ModelAndView toEditContractPage(@PathVariable(value = "id") String id){
-        ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("editContractPage");
-        modelAndView.addObject("id", id);
-        return modelAndView;
-    }
-
 }
 

@@ -1,5 +1,7 @@
 package com.allchip.pack.pojo;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.sql.Timestamp;
 
 public class Good {
@@ -74,10 +76,11 @@ public class Good {
         this.package_count = package_count;
     }
 
+    @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss", timezone = "GMT+08:00")
     public Timestamp getPackage_time() {
         return package_time;
     }
-
+    @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss", timezone = "GMT+08:00")
     public void setPackage_time(Timestamp package_time) {
         this.package_time = package_time;
     }
@@ -145,7 +148,7 @@ public class Good {
                 ", count=" + count +
                 ", package_count=" + package_count +
                 ", package_time=" + package_time +
-                ", totalPrice=" + total_price +
+                ", total_price=" + total_price +
                 '}';
     }
 }

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>编辑订单</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link href="https://cdn.bootcss.com/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="shortcut icon" href="../resources/favicon.ico" th:href="@{/static/favicon.ico}"/>
+
+</head>
+
+<body>
+<div class="row" th:insert="~{common :: header}">
+</div>
+<div class="container" style="min-height: 500px">
+    <br>
+    <div class="panel panel-default">
+        <div class="panel-heading">合同号</div>
+        <div class="panel-body">
+            <p id="id-contract"></p>
+        </div>
+    </div>
+    <form id="edit-good">
+        <div class="form-group">
+            <label for="type">类型</label>
+            <input type="text" class="form-control" id="type" >
+        </div>
+        <div class="form-group">
+            <label for="count">数量</label>
+            <input type="text" class="form-control" id="count" >
+        </div>
+        <div class="form-group">
+            <label for="package-count">已装包数量</label>
+            <input type="text" class="form-control" id="package-count">
+        </div>
+        <div class="form-group">
+            <label for="manufacturer">生产商</label>
+            <input type="text" class="form-control" id="manufacturer">
+        </div>
+        <div class="form-group">
+            <label for="package">package</label>
+            <input type="text" class="form-control" id="package">
+        </div>
+        <div class="form-group">
+            <label for="unit-price">单价</label>
+            <input type="text" class="form-control" id="unit-price">
+        </div>
+        <div class="form-group">
+            <label for="total-price">总价</label>
+            <input type="text" class="form-control" id="total-price">
+        </div>
+        <div class="form-group">
+            <label for="year">年份</label>
+            <input type="text" class="form-control" id="year">
+        </div>
+        <div class="form-group">
+            <label for="package-time">装包时间("yyyy-MM-dd'T'HH:mm:ss"格式)</label>
+            <input type="text" class="form-control" id="package-time">
+        </div>
+        <button type="submit" class="btn btn-default" id="btn-edit">修改</button>
+    </form>
+    <br>
+    <div id="feedback"></div>
+</div>
+<input th:value="${param.id}" type="hidden" id="id-good"/>
+<script type="text/javascript"
+        src="/js/jquery-3.4.1.min.js"></script>
+<script type="text/javascript" src="js/editGood.js"></script>
+</body>
+
+</html>

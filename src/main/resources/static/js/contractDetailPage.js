@@ -95,7 +95,7 @@ function fire_ajax_submit() {
                                             trGood.append("<td>"+data.data.goodList[index].total_price + "</td>")
                                             trGood.append("<td>"+data.data.goodList[index].year + "</td>")
                                             trGood.append("<td>"+data.data.goodList[index].package_time + "</td>")
-                                            trGood.append("<td>"+ "编辑" + "</td>")
+                                            trGood.append("<td><a class=\"btn btn-primary \" href=\"editGoodPage?id="+data.data.goodList[index].id + "\">编辑</a></td>")
                                             trGood.appendTo("#good_list");
                     }
                 $('#feedback').html(data.responseText);

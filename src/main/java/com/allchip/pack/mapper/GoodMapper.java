@@ -24,7 +24,7 @@ public interface GoodMapper {
 
     @Update("update goods set item_index=#{item_index}, type=#{type} , creator=#{creator}, remark=#{remark}  , count = #{count} ," +
             " package_count = #{package_count}, package_time = #{package_time} ,year =#{year} , " +
-            "manufacturer = #{manufacturer}, package = #{package} , unit_price = #{unit_price} where id=#{id}")
+            "manufacturer = #{manufacturer}, package = #{package} ,total_price= #{total_price}, unit_price = #{unit_price} where id=#{id}")
     public int update(Good good);
 
     @Update("update goods set package_count=#{count} , package_time = #{package_time} where (item_index = #{item_index} and number=#{number})")
