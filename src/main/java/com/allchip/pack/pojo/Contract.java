@@ -1,6 +1,9 @@
 package com.allchip.pack.pojo;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.sql.Timestamp;
+import java.util.Date;
 import java.util.List;
 
 public class Contract {
@@ -9,8 +12,10 @@ public class Contract {
     private String creator;
     private String remark;
     private String state;
-    private Timestamp create_time;
-    private Timestamp update_time;
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
+    private Date create_time;
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
+    private Date update_time;
     private String publish_time;
     private String editor;
     private List<Good> goodList;
@@ -73,19 +78,19 @@ public class Contract {
         this.editor = editor;
     }
 
-    public Timestamp getCreate_time() {
+    public Date getCreate_time() {
         return create_time;
     }
 
-    public void setCreate_time(Timestamp create_time) {
+    public void setCreate_time(Date create_time) {
         this.create_time = create_time;
     }
 
-    public Timestamp getUpdate_time() {
+    public Date getUpdate_time() {
         return update_time;
     }
 
-    public void setUpdate_time(Timestamp update_time) {
+    public void setUpdate_time(Date update_time) {
         this.update_time = update_time;
     }
 

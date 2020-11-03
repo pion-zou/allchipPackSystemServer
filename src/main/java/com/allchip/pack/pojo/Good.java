@@ -2,7 +2,8 @@ package com.allchip.pack.pojo;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
-import java.sql.Timestamp;
+import java.util.Date;
+
 
 public class Good {
     private int id;
@@ -17,7 +18,9 @@ public class Good {
     private String remark;
     private int count; //订单数量
     private int package_count; //包装数量
-    private Timestamp package_time; //装包时间
+
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
+    private Date package_time; //装包时间
     private float total_price; //总价
 
     public int getId() {
@@ -76,12 +79,11 @@ public class Good {
         this.package_count = package_count;
     }
 
-    @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss", timezone = "GMT+08:00")
-    public Timestamp getPackage_time() {
+    public Date getPackage_time() {
         return package_time;
     }
-    @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss", timezone = "GMT+08:00")
-    public void setPackage_time(Timestamp package_time) {
+
+    public void setPackage_time(Date package_time) {
         this.package_time = package_time;
     }
 

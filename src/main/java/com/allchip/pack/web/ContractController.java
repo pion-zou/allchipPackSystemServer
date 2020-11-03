@@ -181,7 +181,7 @@ public class ContractController {
         System.out.print("getGoodDetail:" + good);
         bean.setStatus(RequestBean.STATUS_SUCCESS);
         bean.setData(good);
-        return  new GsonBuilder().setDateFormat("yyyy-MM-dd'T'HH:mm:ss").create().toJson(bean);
+        return  new GsonBuilder().setDateFormat("yyyy-MM-dd HH:mm:ss").create().toJson(bean);
     }
 
 
@@ -286,6 +286,17 @@ public class ContractController {
         RequestBean bean = new RequestBean();
         bean.setStatus(RequestBean.STATUS_SUCCESS);
         bean.setMsg("创建成功");
+        return new Gson().toJson(bean);
+    }
+
+    @RequestMapping("/searchContractList")
+    @ResponseBody
+    public String searchContractList(@RequestBody Contract contract) throws Exception {
+        System.out.print("searchContractList:" + contract);
+        List<Contract> list = contractMapper.search(contract);
+        RequestBean<List<Contract>> bean = new RequestBean<List<Contract>>();
+        bean.setStatus(RequestBean.STATUS_SUCCESS);
+        bean.setData(list);
         return new Gson().toJson(bean);
     }
 }
