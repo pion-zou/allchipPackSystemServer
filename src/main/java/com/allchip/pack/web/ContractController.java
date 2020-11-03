@@ -278,4 +278,14 @@ public class ContractController {
         bean.setMsg("编辑成功");
         return new Gson().toJson(bean);
     }
+    //新建订单
+    @RequestMapping("/createContract")
+    @ResponseBody
+    public String createContract(@RequestBody Contract contract) throws Exception {
+        contractMapper.save(contract);
+        RequestBean bean = new RequestBean();
+        bean.setStatus(RequestBean.STATUS_SUCCESS);
+        bean.setMsg("创建成功");
+        return new Gson().toJson(bean);
+    }
 }
