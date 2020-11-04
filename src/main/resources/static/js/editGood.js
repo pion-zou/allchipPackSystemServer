@@ -7,11 +7,13 @@ $(document).ready(function () {
 });
 
 var number;
+var item_index;
 
 function editGood(){
     var request = {}
     request["id"] = $("#id-good").val();
     request["number"] = number;
+    request["item_index"] = item_index;
     request["type"] = $("#type").val();
     request["unit_price"] = $("#unit-price").val();
     request["total_price"] = $("#total-price").val();
@@ -50,6 +52,7 @@ function getGoodDetail(){
             success: function (data) {
                 if(data.status == 1){
                    number = data.data.number
+                   item_index = data.data.item_index
                    $("#id-contract").text(data.data.number)
                    $('#type').val(data.data.type)
                    $('#count').val(data.data.count)

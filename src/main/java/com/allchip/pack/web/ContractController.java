@@ -292,7 +292,6 @@ public class ContractController {
     @RequestMapping("/searchContractList")
     @ResponseBody
     public String searchContractList(@RequestBody Contract contract) throws Exception {
-        System.out.print("searchContractList:" + contract);
         List<Contract> list = contractMapper.search(contract);
         RequestBean<List<Contract>> bean = new RequestBean<List<Contract>>();
         bean.setStatus(RequestBean.STATUS_SUCCESS);
